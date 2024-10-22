@@ -9,6 +9,11 @@ const todoList = [];
 
 addBtn.addEventListener("click", (e) => { 
     e.preventDefault();
+
+    if(todoForm.textarea.value === "") {
+        return;
+    }
+
     const todo = {
         id: todoList.length + 1,
         text: todoForm.textarea.value,
