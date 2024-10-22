@@ -6,6 +6,7 @@ const doneChkBox = document.getElementById("checkbox-done");
 const todoUL = document.getElementById("todo-list");
 
 const todoList = [];
+let nextId = 1;
 
 addBtn.addEventListener("click", (e) => { 
     e.preventDefault();
@@ -15,13 +16,11 @@ addBtn.addEventListener("click", (e) => {
     }
 
     const todo = {
-        id: todoList.length + 1,
+        id: nextId++,
         text: todoForm.textarea.value,
         done: false
     };
-    console.log(todo);
     todoList.push(todo);
-    console.log(todoList);
     renderToDoList();
     todoForm.reset();
 })
