@@ -20,6 +20,10 @@ font-size: 62.5%;
     font-weight: 700;
 }
 
+.collapsed {
+    display: none;
+}
+
 
 /* ToDo Form */
 

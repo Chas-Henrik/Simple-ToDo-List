@@ -51,6 +51,12 @@ function renderToDoList() {
         console.log(li);
         todoUL.appendChild(li);
     });
+    
+    if(todoList.length === 0) {
+        todoUL.classList.add("collapsed");
+    } else {
+        todoUL.classList.remove("collapsed");
+    }
 }
 
 renderToDoList();
