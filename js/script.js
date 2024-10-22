@@ -48,7 +48,7 @@ function renderToDoList() {
                 item.done = true;
                 renderToDoList();
             }
-        })
+        });
         console.log(li);
         todoUL.appendChild(li);
     });
