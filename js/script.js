@@ -8,12 +8,22 @@ const todoUL = document.getElementById("todo-list");
 const todoList = [];
 let nextId = 1;
 
+function removeToDo(id) {
+    for (let i = 0; i < todoList.length; i++) {
+        if (todoList[i].id === id) {
+            todoList.splice(i, 1);
+            break;
+        }
+    }
+}
+
 addBtn.addEventListener("click", (e) => { 
-    e.preventDefault();
 
     if(todoForm.textarea.value === "") {
         return;
     }
+
+    e.preventDefault();
 
     const todo = {
         id: nextId++,
@@ -25,7 +35,6 @@ addBtn.addEventListener("click", (e) => {
     todoForm.reset();
 })
 
-
 function renderToDoList() {
     todoUL.innerHTML = "";
     todoList.forEach(function(item) {
@@ -34,14 +43,8 @@ function renderToDoList() {
         li.style.textDecoration = item.done ? "line-through" : "none";
         li.addEventListener("click", (e) => {
             if(e.target.tagName === 'BUTTON') {
-                e.preventDefault();
                 console.log("button was clicked");
-                for (let i = 0; i < todoList.length; i++) {
-                    if (todoList[i].id === item.id) {
-                        todoList.splice(i, 1);
-                        break;
-                    }
-                }
+                removeToDo(item.id);
                 renderToDoList();
             } else if (e.target.tagName === 'LI') {
                 item.done = true;
