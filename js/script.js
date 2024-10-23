@@ -39,20 +39,22 @@ function renderToDoList() {
     todoUL.innerHTML = "";
     todoList.forEach(function(item) {
         const li = document.createElement("li");
-        li.innerHTML = `<button type="button">X</button> ${item.text}`;
-        li.style.textDecoration = item.done ? "line-through" : "none";
+        li.innerHTML = `<button type="button">X</button><p>${item.text}</p>`;
         li.addEventListener("click", (e) => {
             if(e.target.tagName === 'BUTTON') {
                 console.log("button was clicked");
                 removeToDo(item.id);
                 renderToDoList();
-            } else if (e.target.tagName === 'LI') {
+            } else if (e.target.tagName === 'LI' || e.target.tagName === 'P') {
                 item.done = true;
                 renderToDoList();
             }
         });
         console.log(li);
         todoUL.appendChild(li);
+
+        const todoParagraph = li.querySelectorAll("p");
+        todoParagraph.forEach((p) => p.style.textDecoration = item.done ? "line-through" : "none" );
     });
     
     if(todoList.length === 0) {

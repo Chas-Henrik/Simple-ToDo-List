@@ -83,7 +83,9 @@ font-size: 62.5%;
 }
 
 #todo-list li{
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     padding: 1rem 2rem;
     text-decoration: none;
     border-bottom: 2px solid #ccc;
