@@ -2,7 +2,6 @@ debugger;
 
 const todoForm = document.getElementById("form");
 const addBtn = document.getElementById("add");
-const doneChkBox = document.getElementById("checkbox-done");
 const todoUL = document.getElementById("todo-list");
 
 const todoList = [];
@@ -17,6 +16,7 @@ function removeToDo(id) {
     }
 }
 
+// Form submit event listener
 addBtn.addEventListener("click", (e) => { 
 
     if(todoForm.textarea.value === "") {
@@ -40,6 +40,7 @@ function renderToDoList() {
     todoList.forEach(function(item) {
         const li = document.createElement("li");
         li.innerHTML = `<button type="button">X</button><p>${item.text}</p>`;
+        // Add event listeners to button, li & p
         li.addEventListener("click", (e) => {
             if(e.target.tagName === 'BUTTON') {
                 console.log("button was clicked");
@@ -50,9 +51,8 @@ function renderToDoList() {
                 renderToDoList();
             }
         });
-        console.log(li);
         todoUL.appendChild(li);
-
+        // Add strikethrough if item is done
         const todoParagraph = li.querySelector("p");
         todoParagraph.style.textDecoration = item.done ? "line-through" : "none";
     });
