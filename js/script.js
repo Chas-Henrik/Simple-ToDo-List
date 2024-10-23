@@ -7,15 +7,6 @@ const todoUL = document.getElementById("todo-list");
 const todoList = [];
 let nextId = 1;
 
-function removeToDo(id) {
-    for (let i = 0; i < todoList.length; i++) {
-        if (todoList[i].id === id) {
-            todoList.splice(i, 1);
-            break;
-        }
-    }
-}
-
 // Form submit event listener
 addBtn.addEventListener("click", (e) => { 
 
@@ -37,14 +28,14 @@ addBtn.addEventListener("click", (e) => {
 
 function renderToDoList() {
     todoUL.innerHTML = "";
-    todoList.forEach(function(item) {
+    todoList.forEach(function(item, index) {
         const li = document.createElement("li");
         li.innerHTML = `<button type="button">X</button><p>${item.text}</p>`;
         // Add event listeners to button, li & p
         li.addEventListener("click", (e) => {
             if(e.target.tagName === 'BUTTON') {
                 console.log("button was clicked");
-                removeToDo(item.id);
+                todoList.splice(index, 1);
                 renderToDoList();
             } else if (e.target.tagName === 'LI' || e.target.tagName === 'P') {
                 item.done = true;
