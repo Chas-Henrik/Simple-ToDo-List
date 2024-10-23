@@ -53,8 +53,8 @@ function renderToDoList() {
         console.log(li);
         todoUL.appendChild(li);
 
-        const todoParagraph = li.querySelectorAll("p");
-        todoParagraph.forEach((p) => p.style.textDecoration = item.done ? "line-through" : "none" );
+        const todoParagraph = li.querySelector("p");
+        todoParagraph.style.textDecoration = item.done ? "line-through" : "none";
     });
     
     if(todoList.length === 0) {
